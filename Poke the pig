@@ -1,0 +1,27 @@
+/**
+ * Challenge: You can only play this game once and then you
+ * have to refresh the page. Try adding in a play again
+ * button on the gameover_screen that restarts a 10 second
+ * timer so you can play again and again!
+ */ 
+
+var score = 0;
+
+// After 10 seconds, change the screen to the game over screen. 
+setTimeout(function() {
+  setText("score_label", score);
+  setScreen("gameover_screen");
+}, 10000);
+
+// When the mouse is down on the pig, play a sound,
+// make the pig smaller, and increment the score by 1.
+onEvent("pig", "mousedown", function() {
+  playSound("Pig Oink-SoundBible.com-1424738584.mp3");
+  setSize("pig", 335, 300);
+  score = score + 1;
+});
+
+// Change the pig back to its original size on mouse up.
+onEvent("pig", "mouseup", function() {
+  setSize("pig", 360, 325);
+});
